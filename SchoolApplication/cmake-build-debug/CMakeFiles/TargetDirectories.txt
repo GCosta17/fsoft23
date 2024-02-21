@@ -1,0 +1,3 @@
+C:/Users/gonca/fsosft1-test/fsoft23/SchoolApplication/cmake-build-debug/CMakeFiles/SchoolApplication.dir
+C:/Users/gonca/fsosft1-test/fsoft23/SchoolApplication/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/gonca/fsosft1-test/fsoft23/SchoolApplication/cmake-build-debug/CMakeFiles/rebuild_cache.dir
