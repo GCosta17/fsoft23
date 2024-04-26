@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor "Main_Manager"
+participant "System" as Sys
+activate Main_Manager
+
+Main_Manager -> Sys: Requests list of airport managers
+Sys --> Sys: Validates data
+Sys --> Main_Manager: airport manager list
+
+ group "alt" Data Valid
+    alt Data Valid
+        Sys -> Sys: Retrieves data
+        Sys --> Main_Manager: Returns Success
+    else Data Invalid
+        Sys --> Main_Manager: Returns Failure
+ end
+
+@enduml

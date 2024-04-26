@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor "Flight_Manager"
+participant "System" as Sys
+activate Flight_Manager
+
+Flight_Manager -> Sys: Requests flight staff list
+Sys --> Sys: Validates data
+Sys --> Flight_Manager: flight staff list
+
+ group "alt" Data Valid
+    alt Data Valid
+        Sys -> Sys: Retrieves data
+        Sys --> Flight_Manager: Returns Success
+    else Data Invalid
+        Sys --> Flight_Manager: Returns Failure
+ end
+
+@enduml

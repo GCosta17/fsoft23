@@ -1,0 +1,6 @@
+@startuml
+
+rectangle '**********' Menu ISEP Airport ------ {
+
+}
+@enduml

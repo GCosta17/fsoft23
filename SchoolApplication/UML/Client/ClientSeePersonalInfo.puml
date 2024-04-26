@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor "Client"
+participant "System" as Sys
+activate Client
+
+Client -> Sys: Requests personal information
+Sys --> Sys: Validates client
+Sys --> Client: shows information
+
+
+ group "alt" Data Valid
+    alt Data Valid
+        Sys -> Sys: Retrieves information
+        Sys --> Client: Returns Success
+    else Data Invalid
+        Sys --> Client: Returns Failure
+ end
+
+@enduml

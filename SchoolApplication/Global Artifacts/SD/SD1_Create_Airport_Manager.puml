@@ -1,0 +1,55 @@
+@startuml
+
+autoactivate on
+autonumber
+
+
+participant "controller:Controller" as Ctrl
+participant "view:View" as View
+
+participant "container:TestTypeContainer" as Container
+participant "UKLabs" as UKLabs
+participant "ttp:TestType" as TestType
+
+
+
+
+User -> System: asks to create a new test type
+System -> Ctrl: createTestType()
+Ctrl -> UKLabs: getTestTypeContainer()
+UKLabs --> Ctrl: container
+Ctrl -> Container: create()
+Container --> TestType**: create()
+Container --> Ctrl: ttp
+Ctrl --> System: ok
+System --> User: requests data (internal_code, NHS_code, description)
+
+User -> System: types requested data
+System -> Ctrl: setData(internal_code, NHS_code, description)
+Ctrl -> TestType: setInternalCode(internal_code)
+TestType -->Ctrl: ok
+Ctrl -> TestType: setDescription(description)
+TestType --> Ctrl: ok
+Ctrl -> TestType: setNHScode(NHS_code)
+TestType --> Ctrl: ok
+Ctrl -> Container: validate(ttp)
+Container -> TestType: isValid()
+TestType --> Container: ok
+Container -> Container: checkDuplicates(ttp)
+Container --> Container : ok
+Container --> Ctrl: ok
+Ctrl --> System: ok
+System --> User: shows all data and requests confirmation
+
+User -> System: confirms the data
+System -> Ctrl: saveCreatedTestType()
+Ctrl -> Container: save(ttp)
+Container -> Container : validate(ttp)
+Container --> Container : ok
+Container -> Container: add(ttp)
+Container --> Container : ok
+Container --> Ctrl: ok
+Ctrl --> System: ok
+System --> User: informs operation success
+
+@enduml

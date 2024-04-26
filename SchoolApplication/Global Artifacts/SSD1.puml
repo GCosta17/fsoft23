@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autoactivate on
+autonumber
+
+Actor "Receptionist"
+participant "System" as Sys
+activate Receptionist
+
+Receptionist -> Sys: Enters client data
+Receptionist -> Sys: Saves client data
+
+Sys --> Sys: Validates data
+Receptionist <-- Sys: Returns success
+
+
+@enduml

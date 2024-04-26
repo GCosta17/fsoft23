@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor "Receptionist"
+participant "System" as Sys
+activate Receptionist
+
+Receptionist -> Sys: Requests client list
+Sys --> Receptionist: List of clients
+Receptionist -> Sys: Selects client
+Sys --> Receptionist: client
+Receptionist -> Sys: Requests flight list
+Sys --> Receptionist: List of flights
+Receptionist -> Sys: Selects flight
+Sys --> Receptionist: flight
+Receptionist -> Sys: Creates ticket (client, flight)
+
+
+
+Sys --> Sys: Validates data
+
+ group "alt" Data Valid
+    alt Data Valid
+        Sys -> Sys: Stores ticket data
+        Sys --> Receptionist: Returns Success
+    else Data Invalid
+        Sys --> Receptionist: Returns Failure
+ end
+
+@enduml

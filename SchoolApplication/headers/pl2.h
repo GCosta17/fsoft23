@@ -1,0 +1,7 @@
+#ifndef SCHOOLAPPLICATION_PL2_H
+#define SCHOOLAPPLICATION_PL2_H
+
+bool isEven(int n);
+
+
+#endif //SCHOOLAPPLICATION_PL2_H

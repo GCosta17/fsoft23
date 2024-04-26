@@ -1,0 +1,78 @@
+@startuml
+hide circles
+skinparam classAttributeIconSize 0
+
+class View {
+    +menuAirport(): int
+    +menuMainManager(): int
+    +menuAirportManager(): int
+    +menuFlightManager(): int
+    +menuReceptionist(): int
+    +menuClient(): int
+
+}
+
+class MainManagerView {
+    +getFlightManager(): FlightManager
+    +printFlightManagerList(flightManager:list<FlightManager>&): void
+    +getAirportManager(): AirportManager
+    +printAirportManagerList(airportManager:list<AirportManager>&): void
+
+}
+
+class FlightManagerView {
+    +getFlight(): Flight
+    +printFlightList(flight:list<Flight>&): void
+    +getFlightStaff(): FlightStaff
+    +printFlightStaffList(flightStaff:list<FlightStaff>&): void
+
+}
+
+class AirportManagerView {
+    +getReceptionist(): Receptionist
+    +printReceptionist(): void
+
+}
+
+class ReceptionistView {
+    +getClient(): Client
+    +getTicket(client:ClientContainer &): Ticket
+    +getBaggageList(ticket:Ticket &)
+    +addBaggage(ticket:Ticket &, baggage:Baggage &)
+
+}
+
+class ClientView {
+    +printPersonalInfo(): void
+    +printBookedFlightList(): void
+
+}
+
+class InvalidDataException {
+
+}
+
+class Utils {
+    +getNumber(label:const string&): static int
+    +getString (label:const string&): static string
+}
+
+View .down.> Utils
+View .right.> InvalidDataException
+
+ClientView .left.> Utils
+ClientView .up.> InvalidDataException
+
+ReceptionistView ..> Utils
+ReceptionistView ..> InvalidDataException
+
+AirportManagerView .down.> Utils
+AirportManagerView .left.> InvalidDataException
+
+FlightManagerView .up.> Utils
+FlightManagerView .right.> InvalidDataException
+
+MainManagerView .right.> Utils
+MainManagerView ..> InvalidDataException
+
+@enduml

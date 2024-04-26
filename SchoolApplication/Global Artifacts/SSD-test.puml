@@ -1,0 +1,127 @@
+@startuml UKLabsMS Domain Model
+
+  skinparam classAttributeIconSize 0
+  hide circle
+  hide methods
+
+  title Domain Model
+
+    class Manager {
+        manager_id
+        name
+    }
+
+  class Main_Manager {
+      login_info
+
+  }
+
+  class Flight_Manager {
+      login_info
+
+  }
+
+  class Airport_Manager {
+      login_info
+
+  }
+
+  class Receptionist {
+      receptionist_id
+      name
+      CC_number
+      phone_number
+      e-mail_address
+      login_info
+
+  }
+
+  class Client {
+      client_id
+      name
+      sex
+      birth_date
+      CC_number
+      phone_number
+      e-mail_address
+      login_info
+
+  }
+
+  class Baggage {
+      baggage_id
+      client_id
+      weight
+      area
+
+  }
+
+  class Ticket {
+      ticket_id
+      client_id
+      flight_id
+
+  }
+
+  class Pilot {
+      staff_info
+
+  }
+
+  class Flight_Attendant {
+       staff_info
+
+  }
+
+ class Flight {
+      flight_id
+      flight_info
+
+ }
+
+ class Flight_Staff {
+    flight_staff_id
+    name
+    CC_number
+    phone_number
+    e-mail_address
+
+ }
+
+ class Dispatch {
+
+ }
+
+Manager "*" -- "1" Main_Manager
+Manager "*" -- "1" Airport_Manager
+Manager "*" -- "1" Flight_Manager
+
+Main_Manager "1" -right-- "1" Airport_Manager
+Main_Manager "1" -left- "1" Flight_Manager
+
+
+Flight_Manager "1" --- "*" Flight_Staff
+Flight_Manager "1" -- "*" Flight
+
+Flight_Staff "*" -- "1" Flight
+Flight_Staff "*" -- "1" Pilot
+Flight_Staff "*" -- "1" Flight_Attendant
+
+
+Airport_Manager "1" -- "*" Receptionist
+
+
+Receptionist "1" -- "*" Client : registers
+
+
+Client "1" -- "*" Baggage : has
+Client "1" -- "*" Ticket : has
+
+
+Baggage "*" .. "1" Dispatch
+Dispatch "1" .. "*" Ticket
+
+Ticket "*" -- "1" Flight
+
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+
+folder SchoolApplication {
+    folder model
+    folder controllers
+    folder exceptions
+    folder views
+
+    controllers .right.> model
+    controllers ..> views
+    controllers ..> exceptions
+
+    model .down.> exceptions
+
+    views .up.> model
+    views .left.> exceptions
+
+}
+
+
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+title Airport ISEP User Case Diagram
+
+' Users
+
+Client --> (List personal info)
+Client --> (List booked flights)
+
+Receptionist --> (Create client)
+Receptionist --> (Set ticket to client)
+Receptionist --> (Set baggage to client)
+
+Flight_Manager --> (Create flight)
+Flight_Manager --> (List flights)
+Flight_Manager --> (Create flight staff)
+Flight_Manager --> (List flight staff)
+
+Airport_Manager --> (Create Receptionists)
+Airport_Manager --> (List Receptionists)
+
+Main_Manager --> (Create Airport Manager)
+Main_Manager --> (List Airport Manager)
+Main_Manager --> (Create Flight Manager)
+Main_Manager --> (List Flight Manager)
+
+@enduml

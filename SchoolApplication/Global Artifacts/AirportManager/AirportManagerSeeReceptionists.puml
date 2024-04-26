@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor "Airport_Manager"
+participant "System" as Sys
+activate Airport_Manager
+
+Airport_Manager -> Sys: Requests list of receptionists
+Sys --> Sys: Validates data
+Sys --> Airport_Manager: receptionist list
+
+ group "alt" Data Valid
+    alt Data Valid
+        Sys -> Sys: Retrieves data
+        Sys --> Airport_Manager: Returns Success
+    else Data Invalid
+        Sys --> Airport_Manager: Returns Failure
+ end
+
+@enduml
